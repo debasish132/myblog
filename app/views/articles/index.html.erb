@@ -1,0 +1,23 @@
+<h1>Listing articles</h1>
+<%= link_to 'New article', new_article_path %>
+<table padding="5px" style="border:solid #bababa 1px; margin-top:15px;" width="100%">
+  <tr>
+    <th style="border:solid #bababa 1px; padding:5px;" width="30%" align="left">Title</th>
+    <th style="border:solid #bababa 1px; padding:5px;" width="50%" align="left">Text</th>
+    <th style="border:solid #bababa 1px; padding:5px;" width="20%" align="right"> Action </th>
+  </tr>
+ 
+  <% @articles.each do |article| %>
+    <tr>
+      <td style="border:solid #bababa 1px; padding:5px;" align="left"><%= article.title %></td>
+      <td style="border:solid #bababa 1px; padding:5px;" align="left"><%= article.text %></td>
+      <td style="border:solid #bababa 1px; padding:5px;" align="right">
+        <%= link_to 'View', article_path(article) %> &nbsp;|&nbsp;
+        <%= link_to 'Edit', edit_article_path(article) %> &nbsp;|&nbsp;
+        <%= link_to 'Delete', article_path(article),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
+  <% end %>
+</table>
